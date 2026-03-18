@@ -1,36 +1,47 @@
-import { useState } from "react"
-
 interface Props {
   nombre: string
   precio: number
+  agregarAlCarrito: () => void
 }
 
-function Producto({ nombre, precio }: Props) {
-
-  const [mensaje, setMensaje] = useState("")
-
-  const comprar = () => {
-    setMensaje("Producto agregado al carrito")
-  }
+function Producto({ nombre, precio, agregarAlCarrito }: Props) {
 
   return (
 
     <div style={{
-      border:"1px solid gray",
-      padding:"15px",
-      margin:"10px",
-      borderRadius:"10px"
+      minWidth: "200px",
+      borderRadius: "12px",
+      padding: "15px",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+      textAlign: "center",
+      background: "white"
     }}>
+
+      <img
+        src="https://via.placeholder.com/150"
+        alt={nombre}
+        style={{ borderRadius: "10px" }}
+      />
 
       <h3>{nombre}</h3>
 
-      <p>${precio}</p>
+      <p style={{ color: "green", fontWeight: "bold" }}>
+        ${precio}
+      </p>
 
-      <button onClick={comprar}>
-        Comprar
+      <button
+        onClick={agregarAlCarrito}
+        style={{
+          background: "#0a7cff",
+          color: "white",
+          border: "none",
+          padding: "10px",
+          borderRadius: "8px",
+          cursor: "pointer"
+        }}
+      >
+        🛒 Comprar
       </button>
-
-      <p>{mensaje}</p>
 
     </div>
 
